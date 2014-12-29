@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ParolaMea.org</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Twitter Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Material Design for Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/material-wfont.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/ripples.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      padding-top: 80px;
+    }
+
+    body .navbar .navbar-header .navbar-brand {
+      font-size: 150%;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        Generate Password
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="well page">
+    <form class="form-horizontal" id="generateForm">
+      <fieldset>
+        <div class="form-group">
+          <label for="inputMasterKey" class="col-lg-2 control-label">Master Key</label>
+          <div class="col-lg-10">
+            <input type="password" class="form-control" id="inputMasterKey" placeholder="*****">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputIdentifier" class="col-lg-2 control-label">Identifier</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="inputIdentifier" placeholder="service.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button type="submit" class="btn btn-primary">Generate</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <div id="generate-dialog" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Your Password</h4>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button class="btn btn-primary"><span class="mdi-content-content-copy"></span> Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /.container -->
+
+<!-- JQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Twitter Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<!-- Material Design -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/js/material.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/js/ripples.min.js"></script>
+<!-- Our Javascript -->
+<script src="target/scala-2.11/parolamea-fastopt.js" type="text/javascript" language="javascript"></script>
+<script>
+  parolamea.ParolaMea().main();
+</script>
+
+</body>
+</html>
