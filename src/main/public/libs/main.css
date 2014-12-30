@@ -15,6 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* latin-ext */
+@font-face {
+    font-family: 'Pathway Gothic One';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Pathway Gothic One'), local('PathwayGothicOne-Regular'), url(https://fonts.gstatic.com/s/pathwaygothicone/v4/Lqv9ztoTUV8Q0FmQZzPqaA6LSHyyJAN5JIFgwWnj0Az3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Pathway Gothic One';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Pathway Gothic One'), local('PathwayGothicOne-Regular'), url(/fonts/PathwayGothicOne-Regular.woff2) format('woff2'), url(/fonts/PathwayGothicOne-Regular.woff) format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
 body#parolamea {
     padding-top: 80px;
     font-size: 18px;
@@ -25,8 +42,8 @@ body#parolamea .form-control, body#parolamea .btn {
 }
 
 body#parolamea .navbar .navbar-header .navbar-brand {
-    font-size: 150%;
-    letter-spacing: 1px;
+    font-size: 190%;
+    font-family: 'Pathway Gothic One', sans-serif;
 }
 
 #parolamea .navbar-inverse {
@@ -45,6 +62,9 @@ body#parolamea .navbar .navbar-header .navbar-brand {
 
 #generate-dialog h4.modal-title {
     font-weight: bold;
+    font-size: 200%;
+    font-family: 'Pathway Gothic One', sans-serif;
+    color: #555555;
 }
 
 #generate-dialog .modal-body {
