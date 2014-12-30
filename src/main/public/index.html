@@ -23,10 +23,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+
   <!-- Mobile support -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
 
-  <!-- Twitter Bootstrap -->
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="icon" sizes="36x36" href="icons/icon-36x36.png">
+  <link rel="icon" sizes="128x128" href="icons/icon-128x128.png">
+  <link rel="icon" sizes="192x192" href="icons/icon-192x192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png">
+  <link rel="apple-touch-icon" sizes="300x300" href="icons/icon-300x300.png">
+
+  <!-- Stylesheets -->
   <link href="assets/all.min.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -34,9 +45,9 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
+      <div class="navbar-brand">
         Generate Password
-      </a>
+      </div>
     </div>
   </div>
 </nav>
@@ -79,8 +90,7 @@
   </div>
 </div><!-- /.container -->
 
-<script src="assets/all-debug.js" type="text/javascript" language="javascript"></script>
-<script src="assets/parolamea-opt.js" type="text/javascript" language="javascript"></script>
+<script src="assets/all.min.js" type="text/javascript" language="javascript"></script>
 <script>
   parolamea.ParolaMea().main();
 </script>
