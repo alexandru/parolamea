@@ -26,6 +26,8 @@ object ParolaMea extends js.JSApp with JSUtils {
     $(() => {
       $.material.init()
 
+      $("a#support").attr("href", mailToValue)
+
       $("#generateForm").submit { event: Dynamic =>
         event.preventDefault()
 
