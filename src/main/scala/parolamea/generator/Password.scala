@@ -18,57 +18,43 @@
 package parolamea.generator
 
 object Password {
-  def generate(masterKey: String, identifier: String, groupCount: Int): List[String] = {
-    val hmac = HMAC[SHA256](identifier + secret)
-    hmac.update(masterKey)
-
-    val bytes = hmac.digest()
-    val ints = {
-      val ints = new Array[Int](bytes.length / 4)
-      var intsIdx = 0
-      var bytesIdx = 0
-      while (intsIdx < ints.length) {
-        ints(intsIdx) = bytes(bytesIdx) << 24 |
-          (bytes(bytesIdx+1) & 0xFF) << 16 |
-          (bytes(bytesIdx+2) & 0xFF) << 8 |
-          (bytes(bytesIdx+3) & 0xFF)
-
-        bytesIdx += 4
-        intsIdx += 1
-      }
-      ints
+  def generate(masterKey: String, identifier: String): List[String] = {
+    val string = {
+      val hmac = HMAC[SHA256](identifier + secret)
+      hmac.update(masterKey)
+      val bytes = hmac.digest()
+      val encoded = Base64.encode(bytes, alphabet)
+      val last2digits = (encoded.reverse.filter(digits).take(2).toArray ++ Seq('8', '4'))
+        .take(2).map(_.toString)
+      
+      encoded
+        .replace("=", "")
+        .replace("+", last2digits(0))
+        .replace("/", last2digits(1))
     }
 
-    val groups = new Array[String](groupCount)
-    var random0 = Random.from(ints)
-
-    for (idx <- 0 until groupCount) {
-      val (r1, random1) = random0.nextInt
-      val (r2, random2) = random1.nextInt
-      val (r3, random3) = random2.nextInt
-      val (r4, random4) = random3.nextInt
-
-      groups(idx) =
-        letters(math.abs(r1) % letters.length) +
-        letters(math.abs(r2) % letters.length) +
-        letters(math.abs(r3) % letters.length) +
-        letters(math.abs(r4) % letters.length)
-
-      random0 = random4
-    }
-
-    groups.toList
+    List(
+      string.substring(0, 4),
+      string.substring(4, 8),
+      string.substring(8, 12),
+      string.substring(12, 16)
+    )
   }
-
-  final val letters = Array(
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
-    "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
-    "u", "v", "w", "x", "y", "z", "A", "B", "C", "D",
-    "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",
-    "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X",
-    "Y", "Z")
 
   private[this] final val secret =
     "NkSCwmKP95Wpi6xu"
+
+  private[this] final val digits =
+    Set('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+
+  private[this] final val alphabet = Array(
+    "u", "R", "U", "E", "X", "m", "W", "F",
+    "w", "j", "K", "Z", "r", "e", "3", "0",
+    "G", "J", "v", "N", "B", "O", "V", "d",
+    "6", "n", "+", "z", "7", "g", "q", "x",
+    "s", "Q", "p", "k", "5", "C", "o", "t",
+    "h", "/", "b", "f", "D", "L", "4", "Y",
+    "2", "1", "c", "a", "T", "H", "S", "P",
+    "M", "l", "9", "i", "A", "I", "8", "y"
+  )
 }

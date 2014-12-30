@@ -17,18 +17,25 @@
 
 package parolamea.generator
 
-case class Random(seed: Long) {
-  def nextInt: (Int, Random) = {
-    val newSeed = (seed * 0x5DEECE66DL + 0xBL) & 0xFFFFFFFFFFFFL
-    val nextState = Random(newSeed)
-    val n = (newSeed >>> 16).toInt
-    (n, nextState)
-  }
-}
+import minitest.SimpleTestSuite
+import parolamea.generator.Base64._
 
-object Random {
-  def from(ints: Array[Int]) = {
-    val seed = ints.foldLeft(0L)((a, b) => 31 * a + b)
-    Random(seed)
+object Base64Suite extends SimpleTestSuite {
+  test("simple test") {
+    assertEquals(
+      Base64.encode("ABCDEFG".getBytes),
+      "QUJDREVGRw==")
+
+    assertEquals(
+      Base64.encode(Util.toBytes("Hello world!", "UTF-8")),
+      "SGVsbG8gd29ybGQh"
+    )
+  }
+
+  test("UTF-16") {
+    assertEquals(
+      Base64.encode(Util.toBytes("ᚠᛇᚻ᛫ᛒᛦᚦ᛫ᚠᚱᚩᚠᚢᚱ᛫ᚠᛁᚱᚪ᛫ᚷᛖᚻᚹᛦᛚᚳᚢᛗ", "UTF-8")),
+      "4Zqg4ZuH4Zq74Zur4ZuS4Zum4Zqm4Zur4Zqg4Zqx4Zqp4Zqg4Zqi4Zqx4Zur4Zqg4ZuB4Zqx4Zqq4Zur4Zq34ZuW4Zq74Zq54Zum4Zua4Zqz4Zqi4ZuX"
+    )
   }
 }
