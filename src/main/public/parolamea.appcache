@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v9 - 2014-12-30
+# v10 - 2014-12-30
 /index.html
 /assets/all.css
 /assets/all.js
@@ -8,6 +8,14 @@ CACHE MANIFEST
 /fonts/Material-Design-Icons.svg?-g7cqhn
 /fonts/Material-Design-Icons.ttf?-g7cqhn
 /fonts/Material-Design-Icons.woff?-g7cqhn
+/fonts/Roboto-Regular.woff2
+/fonts/Roboto-Regular.woff
+/fonts/Roboto-Medium.woff2
+/fonts/Roboto-Medium.woff
+/fonts/Roboto-Bold.woff2
+/fonts/Roboto-Bold.woff
+/fonts/Roboto-Italic.woff2
+/fonts/Roboto-Italic.woff
 /fonts/PathwayGothicOne-Regular.woff
 /fonts/PathwayGothicOne-Regular.woff2
 /icons/icon-300x300.png
