@@ -67,6 +67,7 @@ object Build extends SbtBuild {
     Concat.groups := Seq(
       "assets/all.css" -> group(Seq(
         "libs/bootstrap-3.3.1.css",
+        "libs/material-design-0.2.1.css",
         "libs/material-ripples-0.2.1.css",
         "libs/material-wfont-0.2.1.css",
         "libs/main.css"
