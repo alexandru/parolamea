@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ParolaMea.org</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Twitter Bootstrap -->
+  <link href="assets/all.min.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        Generate Password
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="well page">
+    <form class="form-horizontal" id="generateForm" autocomplete="on">
+      <fieldset>
+        <div class="form-group">
+          <label for="inputIdentifier" class="col-lg-2 control-label">Identifier</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="inputIdentifier" placeholder="service.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputMasterKey" class="col-lg-2 control-label">Master Key</label>
+          <div class="col-lg-10">
+            <input type="password" class="form-control" id="inputMasterKey" placeholder="*****">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button type="submit" class="btn btn-primary">Generate</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <div id="generate-dialog" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Your Password</h4>
+        </div>
+        <div class="modal-body"></div>
+      </div>
+    </div>
+  </div>
+</div><!-- /.container -->
+
+<script src="assets/all-debug.js" type="text/javascript" language="javascript"></script>
+<script src="assets/parolamea-opt.js" type="text/javascript" language="javascript"></script>
+<script>
+  parolamea.ParolaMea().main();
+</script>
+
+</body>
+</html>

@@ -14,12 +14,26 @@
 * limitations under the License.
 */
 
+import com.typesafe.sbt.web.SbtWeb.autoImport._
+import com.typesafe.sbt.web.pipeline.Pipeline
+import com.typesafe.sbt.web.{PathMapping, SbtWeb}
+import net.ground5hark.sbt.concat.SbtConcat.autoImport._
+import net.ground5hark.sbt.css.SbtCssCompress.autoImport._
 import org.scalajs.sbtplugin.ScalaJSPlugin
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
-import sbt.{Build => SbtBuild, _}
 import sbt.Keys._
+import sbt.{Build => SbtBuild, _}
 
 object Build extends SbtBuild {
+  val buildJS = TaskKey[Pipeline.Stage]("buildJS", "Build the fastOpt.js and copy it into the staging directory")
+
+  val buildJSDefTask = Def.task { mappings: Seq[PathMapping] =>
+    mappings ++ Seq(
+      (crossTarget.value / "parolamea-opt.js", "assets/parolamea-opt.js"),
+      (crossTarget.value / "parolamea-opt.js.map", "assets/parolamea-opt.js.map")
+    )
+  }
+
   val appSettings = Seq(
     name := "parolamea",
     version := "1.0",
@@ -42,23 +56,41 @@ object Build extends SbtBuild {
           Resolver.ivyStylePatterns)
     ),
 
-    testFrameworks += new TestFramework("minitest.runner.Framework"),
-
-    persistLauncher := true,
-    persistLauncher in Test := false,
     scalaJSStage in Test := FastOptStage,
+    pipelineStages := Seq(buildJS, concat, cssCompress),
 
+    testFrameworks += new TestFramework("minitest.runner.Framework"),
     libraryDependencies ++= Seq(
       "org.monifu" %%%! "minitest" % "0.8" % "test"
     ),
 
-    jsDependencies +=
-      "org.webjars" % "jquery" % "2.1.3" / "jquery.js",
+    Concat.groups := Seq(
+      "assets/all.css" -> group(Seq(
+        "libs/bootstrap-3.3.1.css",
+        "libs/material-ripples-0.2.1.css",
+        "libs/material-wfont-0.2.1.css",
+        "libs/main.css"
+      )),
+      "assets/all-debug.js" -> group(Seq(
+        "libs/jquery-2.1.3.js",
+        "libs/bootstrap-3.3.1.js",
+        "libs/material-design-0.2.1.js",
+        "libs/material-ripples-0.2.1.js"
+      )),
+      "assets/all.js" -> group(Seq(
+        "libs/jquery-2.1.3.js",
+        "libs/bootstrap-3.3.1.js",
+        "libs/material-design-0.2.1.js",
+        "libs/material-ripples-0.2.1.js",
+        "assets/parolamea-opt.js"
+      ))
+    ),
 
-    skip in packageJSDependencies := false
+    buildJS := buildJSDefTask.value,
+    buildJS <<= buildJS.dependsOn(fullOptJS in Compile)
   )
 
   lazy val parolaMea = project.in(file("."))
     .settings(appSettings : _*)
-    .enablePlugins(ScalaJSPlugin)
+    .enablePlugins(ScalaJSPlugin, SbtWeb)
 }

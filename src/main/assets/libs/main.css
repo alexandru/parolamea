@@ -1,0 +1,32 @@
+body {
+    padding-top: 80px;
+}
+
+body .navbar .navbar-header .navbar-brand {
+    font-size: 150%;
+    letter-spacing: 1px;
+}
+
+#generate-dialog .modal-dialog {
+    margin-top: 90px;
+}
+
+#generate-dialog h4.modal-title {
+    font-weight: bold;
+}
+
+#generate-dialog .modal-body {
+    background-color: #eeeeee;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 140%;
+}
+
+#generate-dialog .modal-body span::after {
+    content: " - ";
+    color: #999999;
+}
+
+#generate-dialog .modal-body span:last-child::after {
+    content: "";
+}
