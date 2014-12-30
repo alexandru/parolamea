@@ -44,16 +44,11 @@ body#parolamea .form-control, body#parolamea .btn {
 body#parolamea .navbar .navbar-header .navbar-brand {
     font-size: 190%;
     font-family: 'Pathway Gothic One', sans-serif;
+    color: #DEEDFD;
 }
 
 #parolamea .navbar-inverse {
     background-color: #2d8cee;
-}
-
-#parolamea .navbar-brand {
-    /*color: #ffffff;*/
-    font-weight: bold;
-    font-size: 170%;
 }
 
 #generate-dialog .modal-dialog {
