@@ -22,6 +22,7 @@ import net.ground5hark.sbt.concat.SbtConcat.autoImport._
 import net.ground5hark.sbt.css.SbtCssCompress.autoImport._
 import org.scalajs.sbtplugin.ScalaJSPlugin
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
+import com.typesafe.sbt.uglify.SbtUglify.autoImport._
 import sbt.Keys._
 import sbt.{Build => SbtBuild, _}
 
@@ -58,7 +59,7 @@ object Build extends SbtBuild {
     ),
 
     scalaJSStage in Test := FastOptStage,
-    pipelineStages := Seq(buildJS, concat, cssCompress),
+    pipelineStages := Seq(buildJS, concat, cssCompress, uglify),
 
     testFrameworks += new TestFramework("minitest.runner.Framework"),
     libraryDependencies ++= Seq(
@@ -88,7 +89,8 @@ object Build extends SbtBuild {
     ),
 
     buildJS := buildJSDefTask.value,
-    buildJS <<= buildJS.dependsOn(fullOptJS in Compile)
+    buildJS <<= buildJS.dependsOn(fullOptJS in Compile),
+    UglifyKeys.sourceMap in uglify := false
   )
 
   lazy val parolaMea = project.in(file("."))
