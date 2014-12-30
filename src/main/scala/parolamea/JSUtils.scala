@@ -49,4 +49,14 @@ trait JSUtils {
   lazy val isIExplorer = {
     userAgent.indexOf("msie") != -1 || userAgent.indexOf("trident") != -1
   }
+
+  lazy val mailToValue = {
+    val array = Array[Int](
+      109, 97, 105, 108, 116, 111, 58,
+      99, 111, 110, 116, 97, 99, 116,
+      64, 112, 97, 114, 111, 108, 97,
+      109, 101, 97, 46, 111, 114, 103)
+
+    new String(array.map(_.toChar))
+  }
 }
