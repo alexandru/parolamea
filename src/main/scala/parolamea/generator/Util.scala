@@ -45,7 +45,7 @@ object Util {
    * @return a string of hexadecimal characters (two for each byte)
    *         representing the designated input byte sub-array.
    */
-  def toString(ba: Array[Byte], offset: Int, length: Int): String = {
+  def toHexString(ba: Array[Byte], offset: Int, length: Int): String = {
     val buf: Array[Char] = new Array[Char](length * 2)
 
     var i: Int = 0
@@ -80,8 +80,8 @@ object Util {
    * @return a string of hexadecimal characters (two for each byte)
    *         representing the designated input byte array.
    */
-  def toString(ba: Array[Byte]): String = {
-    toString(ba, 0, ba.length)
+  def toHexString(ba: Array[Byte]): String = {
+    toHexString(ba, 0, ba.length)
   }
 
   private final val HEX_DIGITS: Array[Char] =

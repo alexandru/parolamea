@@ -80,7 +80,7 @@ final class HMAC[MD <: IMessageDigest : Builder] private (key: Array[Byte])
 
   def hexDigest(): String = {
     if (shouldReset) reset()
-    Util.toString(digest())
+    Util.toHexString(digest())
   }
 
   lazy val selfTest: Boolean = {

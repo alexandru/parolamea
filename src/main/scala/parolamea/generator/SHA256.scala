@@ -149,7 +149,7 @@ object SHA256 {
     md.update(0x61.toByte)
     md.update(0x62.toByte)
     md.update(0x63.toByte)
-    val result: String = Util.toString(md.digest())
+    val result: String = Util.toHexString(md.digest())
     DIGEST0 == result
   }
 

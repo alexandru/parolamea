@@ -88,7 +88,7 @@ abstract class BaseHash(
   }
 
   def hexDigest(): String = {
-    Util.toString(digest())
+    Util.toHexString(digest())
   }
 
   def reset(): Unit = {

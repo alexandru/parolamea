@@ -31,7 +31,7 @@ object ParolaMea extends js.JSApp with JSUtils {
       $("#generateForm").submit { event: Dynamic =>
         event.preventDefault()
 
-        val newPassword = Password.generate(inputMasterKey(), inputIdentifier(), 4)
+        val newPassword = Password.generate(inputMasterKey(), inputIdentifier())
         val newPasswordHtml = newPassword.map(x => s"<span>$x</span>").mkString
 
         $("#generate-dialog .modal-body").html(newPasswordHtml)
