@@ -28,10 +28,7 @@ object Build extends SbtBuild {
   val buildJS = TaskKey[Pipeline.Stage]("buildJS", "Build the fastOpt.js and copy it into the staging directory")
 
   val buildJSDefTask = Def.task { mappings: Seq[PathMapping] =>
-    mappings ++ Seq(
-      (crossTarget.value / "parolamea-opt.js", "assets/parolamea-opt.js"),
-      (crossTarget.value / "parolamea-opt.js.map", "assets/parolamea-opt.js.map")
-    )
+    mappings :+ (crossTarget.value / "parolamea-opt.js", "assets/parolamea-opt.js")
   }
 
   val appSettings = Seq(
@@ -87,7 +84,8 @@ object Build extends SbtBuild {
     ),
 
     buildJS := buildJSDefTask.value,
-    buildJS <<= buildJS.dependsOn(fullOptJS in Compile)
+    buildJS <<= buildJS.dependsOn(fullOptJS in Compile),
+    emitSourceMaps in fullOptJS := false
   )
 
   lazy val parolaMea = project.in(file("."))
