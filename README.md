@@ -1,4 +1,4 @@
-# ParolaMea.org
+# parolamea.org
 
 A password generator, as alternative to 1Password or LastPass.
 "*Parola mea*" means "*my password*" in Romanian.
