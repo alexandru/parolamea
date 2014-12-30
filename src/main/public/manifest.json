@@ -1,12 +1,6 @@
 {
-  "name": "Parola Mea",
+  "name": "My Password",
   "icons": [
-    {
-      "src": "icons/icon-36x36.png",
-      "sizes": "36x36",
-      "type": "image/png",
-      "density": "0.75"
-    },
     {
       "src": "icons/icon-48x48.png",
       "sizes": "48x48",
