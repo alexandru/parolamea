@@ -50,12 +50,17 @@
 }
 
 body#parolamea {
-    padding-top: 80px;
+    padding-top: 120px;
     font-size: 18px;
 }
 
 body#parolamea .form-control, body#parolamea .btn {
     font-size: 18px;
+}
+
+body#parolamea > .navbar {
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 body#parolamea .navbar .navbar-header .navbar-brand {
@@ -69,7 +74,7 @@ body#parolamea .navbar .navbar-header .navbar-brand {
 }
 
 #generate-dialog .modal-dialog {
-    margin-top: 90px;
+    margin-top: 110px;
 }
 
 #generate-dialog h4.modal-title {
