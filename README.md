@@ -1,8 +1,6 @@
-# parolamea.org
+# parolamea
 
-<a href="https://parolamea.org">
-  <img src="src/main/public/icons/icon-96x96.png" border="0" align="right" />
-</a>
+<img src="src/main/public/icons/icon-96x96.png" border="0" align="right" />
 
 A simple password generator, as an alternative to
 [1Password](https://agilebits.com/onepassword)
