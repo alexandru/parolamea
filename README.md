@@ -13,8 +13,6 @@ for being able to use unique and strong passwords for all of my accounts, but wi
 the expense of the available solutions and without the possibility of being locked-out
 of some online account.
 
-Try it out: [parolamea.org](https://parolamea.org/)
-
 <a href="https://travis-ci.org/alexandru/parolamea"><img src="https://travis-ci.org/alexandru/parolamea.svg?branch=master" border="0" /></a>
 
 ## Details
