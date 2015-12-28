@@ -1,6 +1,8 @@
 # parolamea
 
-<img src="src/main/public/icons/icon-96x96.png" border="0" align="right" />
+<a href="https://alexandru.github.io/parolamea/">
+  <img src="src/main/public/icons/icon-96x96.png" border="0" align="right" />
+</a>
 
 A simple password generator, as an alternative to
 [1Password](https://agilebits.com/onepassword)
@@ -10,6 +12,8 @@ or [LastPass](https://lastpass.com/).
 for being able to use unique and strong passwords for all of my accounts, but without
 the expense of the available solutions and without the possibility of being locked-out
 of some online account.
+
+Try it out: <a href="https://alexandru.github.io/parolamea/">https://alexandru.github.io/parolamea/</a>
 
 <a href="https://travis-ci.org/alexandru/parolamea"><img src="https://travis-ci.org/alexandru/parolamea.svg?branch=master" border="0" /></a>
 
