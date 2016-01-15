@@ -20,16 +20,26 @@ package parolamea
 import parolamea.generator.Password
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic
+import scala.scalajs.js.Dynamic.global
 
 object ParolaMea extends js.JSApp with JSUtils {
+  def onHashChange(): Unit = {
+    currentHash().foreach(setInputIdentifier)
+    $("#generate-dialog").modal("hide")
+  }
+
   def main(): Unit = {
     $(() => {
       $.material.init()
+
+      onHashChange()
+      global.addEventListener("hashchange", onHashChange _, false)
 
       $("a#support").attr("href", mailToValue)
 
       $("#generateForm").submit { event: Dynamic =>
         event.preventDefault()
+        pushState("#" + inputIdentifier())
 
         val newPassword = Password.generate(inputMasterKey(), inputIdentifier())
         val newPasswordHtml = newPassword.map(x => s"<span>$x</span>").mkString

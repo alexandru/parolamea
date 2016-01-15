@@ -33,9 +33,28 @@ trait JSUtils {
       .asInstanceOf[String]
   }
 
+  def currentHash(): Option[String] = {
+    val href = currentHREF()
+    val idx = href.lastIndexOf("#")
+    if (idx < 0) None else Option(href.substring(idx + 1, href.length)).filter(_.nonEmpty)
+  }
+
+  def setInputIdentifier(value: String): Unit = {
+    $("#inputIdentifier").`val`(value)
+  }
+
   def generatedPassword(): String = {
     $("#generate-dialog .modal-body").text()
       .asInstanceOf[String]
+  }
+
+  def pushState(location: String): Unit = {
+    if (!isUndefined(global.history))
+      global.history.pushState(literal(), "", location)
+  }
+
+  def currentHREF(): String = {
+    global.window.location.href.asInstanceOf[String]
   }
 
   def isUndefined(value: js.Any): Boolean = {
