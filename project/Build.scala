@@ -35,8 +35,8 @@ object Build extends SbtBuild {
     name := "parolamea",
     version := "1.1",
 
-    organization := "com.bionicspirit",
-    scalaVersion := "2.11.7",
+    organization := "org.alexn",
+    scalaVersion := "2.11.8",
 
     scalacOptions ++= Seq(
       "-unchecked", "-deprecation", "-feature", "-Xlint", "-target:jvm-1.6",
@@ -58,7 +58,7 @@ object Build extends SbtBuild {
 
     testFrameworks += new TestFramework("minitest.runner.Framework"),
     libraryDependencies ++= Seq(
-      "org.monifu" %%%! "minitest" % "0.14" % "test"
+      "io.monix" %%%! "minitest" % "0.22" % "test"
     ),
 
     Concat.groups := Seq(

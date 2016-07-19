@@ -26,7 +26,7 @@ object Password {
       val encoded = Base64.encode(bytes, alphabet)
       val last2digits = (encoded.reverse.filter(digits).take(2).toArray ++ Seq('8', '4'))
         .take(2).map(_.toString)
-      
+
       encoded
         .replace("=", "")
         .replace("+", last2digits(0))
@@ -42,7 +42,7 @@ object Password {
   }
 
   private[this] final val secret =
-    "NkSCwmKP95Wpi6xu"
+    "N7~H7{P:0y_^7IMOh9B<J]Obhk!GQI7^Z4X)[n04q2'7*Sy:k6O{)[}F-l0sl9>x"
 
   private[this] final val digits =
     Set('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
