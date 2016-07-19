@@ -13,7 +13,7 @@ for being able to use unique and strong passwords for all of my accounts, but wi
 the expense of the available solutions and without the possibility of being locked-out
 of some online account.
 
-Try it out: <a href="https://alexandru.github.io/parolamea/">https://alexandru.github.io/parolamea/</a>
+Try it out: <a href="https://passgen.alexn.org/">https://passgen.alexn.org</a>
 
 <a href="https://travis-ci.org/alexandru/parolamea"><img src="https://travis-ci.org/alexandru/parolamea.svg?branch=master" border="0" /></a>
 
